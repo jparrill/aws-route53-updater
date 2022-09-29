@@ -13,7 +13,7 @@ type Record struct {
 
 type JSONFile string
 type YAMLFile string
-type CSVFile string
+type TEXTFile string
 
 type Load interface {
 	RecordsFile()
@@ -21,7 +21,7 @@ type Load interface {
 
 func (j JSONFile) RecordsFile() {}
 func (y YAMLFile) RecordsFile() {}
-func (c CSVFile) RecordsFile()  {}
+func (c TEXTFile) RecordsFile() {}
 
 func parseFile(path string) ([]Record, error) {}
 

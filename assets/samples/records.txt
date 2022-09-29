@@ -1,0 +1,91 @@
+RESOURCERECORDSETS	aws.kerbeross.com.	172800	NS
+RESOURCERECORDS	ns-568.awsdns-07.net.
+RESOURCERECORDS	ns-241.awsdns-30.com.
+RESOURCERECORDS	ns-1128.awsdns-13.org.
+RESOURCERECORDS	ns-1892.awsdns-44.co.uk.
+RESOURCERECORDSETS	aws.kerbeross.com.	900	SOA
+RESOURCERECORDS	ns-568.awsdns-07.net. awsdns-hostmaster.amazon.com. 1 7200 900 1209600 86400
+RESOURCERECORDSETS	alertmanager-main-openshift-monitoring-external-dns.apps.jparrill-dest.aws.kerbeross.com.	300	TXT
+RESOURCERECORDS	"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-monitoring/alertmanager-main"
+RESOURCERECORDSETS	alertmanager-main-openshift-monitoring.apps.jparrill-dest.aws.kerbeross.com.	300	CNAME
+RESOURCERECORDS	router-default.apps.jparrill-dest.aws.kerbeross.com
+RESOURCERECORDSETS	canary-openshift-ingress-canary-external-dns.apps.jparrill-dest.aws.kerbeross.com.	300	TXT
+RESOURCERECORDS	"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-ingress-canary/canary"
+RESOURCERECORDSETS	canary-openshift-ingress-canary.apps.jparrill-dest.aws.kerbeross.com.	300	CNAME
+RESOURCERECORDS	router-default.apps.jparrill-dest.aws.kerbeross.com
+RESOURCERECORDSETS	cname-alertmanager-main-openshift-monitoring-external-dns.apps.jparrill-dest.aws.kerbeross.com.	300	TXT
+RESOURCERECORDS	"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-monitoring/alertmanager-main"
+RESOURCERECORDSETS	cname-canary-openshift-ingress-canary-external-dns.apps.jparrill-dest.aws.kerbeross.com.	300	TXT
+RESOURCERECORDS	"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-ingress-canary/canary"
+RESOURCERECORDSETS	cname-console-openshift-console-external-dns.apps.jparrill-dest.aws.kerbeross.com.	300	TXT
+RESOURCERECORDS	"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-console/console"
+RESOURCERECORDSETS	cname-downloads-openshift-console-external-dns.apps.jparrill-dest.aws.kerbeross.com.	300	TXT
+RESOURCERECORDS	"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-console/downloads"
+RESOURCERECORDSETS	cname-prometheus-k8s-federate-openshift-monitoring-external-dns.apps.jparrill-dest.aws.kerbeross.com.	300	TXT
+RESOURCERECORDS	"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-monitoring/prometheus-k8s-federate"
+RESOURCERECORDSETS	cname-prometheus-k8s-openshift-monitoring-external-dns.apps.jparrill-dest.aws.kerbeross.com.	300	TXT
+RESOURCERECORDS	"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-monitoring/prometheus-k8s"
+RESOURCERECORDSETS	cname-thanos-querier-openshift-monitoring-external-dns.apps.jparrill-dest.aws.kerbeross.com.	300	TXT
+RESOURCERECORDS	"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-monitoring/thanos-querier"
+RESOURCERECORDSETS	console-openshift-console-external-dns.apps.jparrill-dest.aws.kerbeross.com.	300	TXT
+RESOURCERECORDS	"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-console/console"
+RESOURCERECORDSETS	console-openshift-console.apps.jparrill-dest.aws.kerbeross.com.	300	CNAME
+RESOURCERECORDS	router-default.apps.jparrill-dest.aws.kerbeross.com
+RESOURCERECORDSETS	downloads-openshift-console-external-dns.apps.jparrill-dest.aws.kerbeross.com.	300	TXT
+RESOURCERECORDS	"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-console/downloads"
+RESOURCERECORDSETS	downloads-openshift-console.apps.jparrill-dest.aws.kerbeross.com.	300	CNAME
+RESOURCERECORDS	router-default.apps.jparrill-dest.aws.kerbeross.com
+RESOURCERECORDSETS	prometheus-k8s-federate-openshift-monitoring-external-dns.apps.jparrill-dest.aws.kerbeross.com.	300	TXT
+RESOURCERECORDS	"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-monitoring/prometheus-k8s-federate"
+RESOURCERECORDSETS	prometheus-k8s-federate-openshift-monitoring.apps.jparrill-dest.aws.kerbeross.com.	300	CNAME
+RESOURCERECORDS	router-default.apps.jparrill-dest.aws.kerbeross.com
+RESOURCERECORDSETS	prometheus-k8s-openshift-monitoring-external-dns.apps.jparrill-dest.aws.kerbeross.com.	300	TXT
+RESOURCERECORDS	"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-monitoring/prometheus-k8s"
+RESOURCERECORDSETS	prometheus-k8s-openshift-monitoring.apps.jparrill-dest.aws.kerbeross.com.	300	CNAME
+RESOURCERECORDS	router-default.apps.jparrill-dest.aws.kerbeross.com
+RESOURCERECORDSETS	thanos-querier-openshift-monitoring-external-dns.apps.jparrill-dest.aws.kerbeross.com.	300	TXT
+RESOURCERECORDS	"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-monitoring/thanos-querier"
+RESOURCERECORDSETS	thanos-querier-openshift-monitoring.apps.jparrill-dest.aws.kerbeross.com.	300	CNAME
+RESOURCERECORDS	router-default.apps.jparrill-dest.aws.kerbeross.com
+RESOURCERECORDSETS	alertmanager-main-openshift-monitoring-external-dns.apps.jparrill-dev.aws.kerbeross.com.	300	TXT
+RESOURCERECORDS	"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-monitoring/alertmanager-main"
+RESOURCERECORDSETS	alertmanager-main-openshift-monitoring.apps.jparrill-dev.aws.kerbeross.com.	300	CNAME
+RESOURCERECORDS	router-default.apps.jparrill-dev.aws.kerbeross.com
+RESOURCERECORDSETS	canary-openshift-ingress-canary-external-dns.apps.jparrill-dev.aws.kerbeross.com.	300	TXT
+RESOURCERECORDS	"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-ingress-canary/canary"
+RESOURCERECORDSETS	canary-openshift-ingress-canary.apps.jparrill-dev.aws.kerbeross.com.	300	CNAME
+RESOURCERECORDS	router-default.apps.jparrill-dev.aws.kerbeross.com
+RESOURCERECORDSETS	cname-alertmanager-main-openshift-monitoring-external-dns.apps.jparrill-dev.aws.kerbeross.com.	300	TXT
+RESOURCERECORDS	"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-monitoring/alertmanager-main"
+RESOURCERECORDSETS	cname-canary-openshift-ingress-canary-external-dns.apps.jparrill-dev.aws.kerbeross.com.	300	TXT
+RESOURCERECORDS	"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-ingress-canary/canary"
+RESOURCERECORDSETS	cname-console-openshift-console-external-dns.apps.jparrill-dev.aws.kerbeross.com.	300	TXT
+RESOURCERECORDS	"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-console/console"
+RESOURCERECORDSETS	cname-downloads-openshift-console-external-dns.apps.jparrill-dev.aws.kerbeross.com.	300	TXT
+RESOURCERECORDS	"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-console/downloads"
+RESOURCERECORDSETS	cname-prometheus-k8s-federate-openshift-monitoring-external-dns.apps.jparrill-dev.aws.kerbeross.com.	300	TXT
+RESOURCERECORDS	"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-monitoring/prometheus-k8s-federate"
+RESOURCERECORDSETS	cname-prometheus-k8s-openshift-monitoring-external-dns.apps.jparrill-dev.aws.kerbeross.com.	300	TXT
+RESOURCERECORDS	"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-monitoring/prometheus-k8s"
+RESOURCERECORDSETS	cname-thanos-querier-openshift-monitoring-external-dns.apps.jparrill-dev.aws.kerbeross.com.	300	TXT
+RESOURCERECORDS	"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-monitoring/thanos-querier"
+RESOURCERECORDSETS	console-openshift-console-external-dns.apps.jparrill-dev.aws.kerbeross.com.	300	TXT
+RESOURCERECORDS	"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-console/console"
+RESOURCERECORDSETS	console-openshift-console.apps.jparrill-dev.aws.kerbeross.com.	300	CNAME
+RESOURCERECORDS	router-default.apps.jparrill-dev.aws.kerbeross.com
+RESOURCERECORDSETS	downloads-openshift-console-external-dns.apps.jparrill-dev.aws.kerbeross.com.	300	TXT
+RESOURCERECORDS	"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-console/downloads"
+RESOURCERECORDSETS	downloads-openshift-console.apps.jparrill-dev.aws.kerbeross.com.	300	CNAME
+RESOURCERECORDS	router-default.apps.jparrill-dev.aws.kerbeross.com
+RESOURCERECORDSETS	prometheus-k8s-federate-openshift-monitoring-external-dns.apps.jparrill-dev.aws.kerbeross.com.	300	TXT
+RESOURCERECORDS	"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-monitoring/prometheus-k8s-federate"
+RESOURCERECORDSETS	prometheus-k8s-federate-openshift-monitoring.apps.jparrill-dev.aws.kerbeross.com.	300	CNAME
+RESOURCERECORDS	router-default.apps.jparrill-dev.aws.kerbeross.com
+RESOURCERECORDSETS	prometheus-k8s-openshift-monitoring-external-dns.apps.jparrill-dev.aws.kerbeross.com.	300	TXT
+RESOURCERECORDS	"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-monitoring/prometheus-k8s"
+RESOURCERECORDSETS	prometheus-k8s-openshift-monitoring.apps.jparrill-dev.aws.kerbeross.com.	300	CNAME
+RESOURCERECORDS	router-default.apps.jparrill-dev.aws.kerbeross.com
+RESOURCERECORDSETS	thanos-querier-openshift-monitoring-external-dns.apps.jparrill-dev.aws.kerbeross.com.	300	TXT
+RESOURCERECORDS	"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-monitoring/thanos-querier"
+RESOURCERECORDSETS	thanos-querier-openshift-monitoring.apps.jparrill-dev.aws.kerbeross.com.	300	CNAME
+RESOURCERECORDS	router-default.apps.jparrill-dev.aws.kerbeross.com
