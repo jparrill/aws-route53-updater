@@ -1,0 +1,14 @@
+{
+	"Comment": "Update record to add new CNAME record",
+	"Changes": [
+	{{range .}}
+	{
+		"Action": \"{{ .Action }}\",
+		"ResourceRecordSet": {
+			"Name": \"{{ .DNSRecord }}\",
+			"Type": \"{{ .Type }}\"
+      	},
+    },
+	{{end .}}
+  ]
+}

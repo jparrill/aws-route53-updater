@@ -1,0 +1,453 @@
+{
+    "ResourceRecordSets": [
+        {
+            "Name": "aws.kerbeross.com.",
+            "Type": "NS",
+            "TTL": 172800,
+            "ResourceRecords": [
+                {
+                    "Value": "ns-568.awsdns-07.net."
+                },
+                {
+                    "Value": "ns-241.awsdns-30.com."
+                },
+                {
+                    "Value": "ns-1128.awsdns-13.org."
+                },
+                {
+                    "Value": "ns-1892.awsdns-44.co.uk."
+                }
+            ]
+        },
+        {
+            "Name": "aws.kerbeross.com.",
+            "Type": "SOA",
+            "TTL": 900,
+            "ResourceRecords": [
+                {
+                    "Value": "ns-568.awsdns-07.net. awsdns-hostmaster.amazon.com. 1 7200 900 1209600 86400"
+                }
+            ]
+        },
+        {
+            "Name": "alertmanager-main-openshift-monitoring-external-dns.apps.jparrill-dest.aws.kerbeross.com.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-monitoring/alertmanager-main\""
+                }
+            ]
+        },
+        {
+            "Name": "alertmanager-main-openshift-monitoring.apps.jparrill-dest.aws.kerbeross.com.",
+            "Type": "CNAME",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "router-default.apps.jparrill-dest.aws.kerbeross.com"
+                }
+            ]
+        },
+        {
+            "Name": "canary-openshift-ingress-canary-external-dns.apps.jparrill-dest.aws.kerbeross.com.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-ingress-canary/canary\""
+                }
+            ]
+        },
+        {
+            "Name": "canary-openshift-ingress-canary.apps.jparrill-dest.aws.kerbeross.com.",
+            "Type": "CNAME",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "router-default.apps.jparrill-dest.aws.kerbeross.com"
+                }
+            ]
+        },
+        {
+            "Name": "cname-alertmanager-main-openshift-monitoring-external-dns.apps.jparrill-dest.aws.kerbeross.com.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-monitoring/alertmanager-main\""
+                }
+            ]
+        },
+        {
+            "Name": "cname-canary-openshift-ingress-canary-external-dns.apps.jparrill-dest.aws.kerbeross.com.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-ingress-canary/canary\""
+                }
+            ]
+        },
+        {
+            "Name": "cname-console-openshift-console-external-dns.apps.jparrill-dest.aws.kerbeross.com.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-console/console\""
+                }
+            ]
+        },
+        {
+            "Name": "cname-downloads-openshift-console-external-dns.apps.jparrill-dest.aws.kerbeross.com.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-console/downloads\""
+                }
+            ]
+        },
+        {
+            "Name": "cname-prometheus-k8s-federate-openshift-monitoring-external-dns.apps.jparrill-dest.aws.kerbeross.com.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-monitoring/prometheus-k8s-federate\""
+                }
+            ]
+        },
+        {
+            "Name": "cname-prometheus-k8s-openshift-monitoring-external-dns.apps.jparrill-dest.aws.kerbeross.com.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-monitoring/prometheus-k8s\""
+                }
+            ]
+        },
+        {
+            "Name": "cname-thanos-querier-openshift-monitoring-external-dns.apps.jparrill-dest.aws.kerbeross.com.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-monitoring/thanos-querier\""
+                }
+            ]
+        },
+        {
+            "Name": "console-openshift-console-external-dns.apps.jparrill-dest.aws.kerbeross.com.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-console/console\""
+                }
+            ]
+        },
+        {
+            "Name": "console-openshift-console.apps.jparrill-dest.aws.kerbeross.com.",
+            "Type": "CNAME",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "router-default.apps.jparrill-dest.aws.kerbeross.com"
+                }
+            ]
+        },
+        {
+            "Name": "downloads-openshift-console-external-dns.apps.jparrill-dest.aws.kerbeross.com.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-console/downloads\""
+                }
+            ]
+        },
+        {
+            "Name": "downloads-openshift-console.apps.jparrill-dest.aws.kerbeross.com.",
+            "Type": "CNAME",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "router-default.apps.jparrill-dest.aws.kerbeross.com"
+                }
+            ]
+        },
+        {
+            "Name": "prometheus-k8s-federate-openshift-monitoring-external-dns.apps.jparrill-dest.aws.kerbeross.com.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-monitoring/prometheus-k8s-federate\""
+                }
+            ]
+        },
+        {
+            "Name": "prometheus-k8s-federate-openshift-monitoring.apps.jparrill-dest.aws.kerbeross.com.",
+            "Type": "CNAME",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "router-default.apps.jparrill-dest.aws.kerbeross.com"
+                }
+            ]
+        },
+        {
+            "Name": "prometheus-k8s-openshift-monitoring-external-dns.apps.jparrill-dest.aws.kerbeross.com.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-monitoring/prometheus-k8s\""
+                }
+            ]
+        },
+        {
+            "Name": "prometheus-k8s-openshift-monitoring.apps.jparrill-dest.aws.kerbeross.com.",
+            "Type": "CNAME",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "router-default.apps.jparrill-dest.aws.kerbeross.com"
+                }
+            ]
+        },
+        {
+            "Name": "thanos-querier-openshift-monitoring-external-dns.apps.jparrill-dest.aws.kerbeross.com.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-monitoring/thanos-querier\""
+                }
+            ]
+        },
+        {
+            "Name": "thanos-querier-openshift-monitoring.apps.jparrill-dest.aws.kerbeross.com.",
+            "Type": "CNAME",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "router-default.apps.jparrill-dest.aws.kerbeross.com"
+                }
+            ]
+        },
+        {
+            "Name": "alertmanager-main-openshift-monitoring-external-dns.apps.jparrill-dev.aws.kerbeross.com.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-monitoring/alertmanager-main\""
+                }
+            ]
+        },
+        {
+            "Name": "alertmanager-main-openshift-monitoring.apps.jparrill-dev.aws.kerbeross.com.",
+            "Type": "CNAME",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "router-default.apps.jparrill-dev.aws.kerbeross.com"
+                }
+            ]
+        },
+        {
+            "Name": "canary-openshift-ingress-canary-external-dns.apps.jparrill-dev.aws.kerbeross.com.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-ingress-canary/canary\""
+                }
+            ]
+        },
+        {
+            "Name": "canary-openshift-ingress-canary.apps.jparrill-dev.aws.kerbeross.com.",
+            "Type": "CNAME",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "router-default.apps.jparrill-dev.aws.kerbeross.com"
+                }
+            ]
+        },
+        {
+            "Name": "cname-alertmanager-main-openshift-monitoring-external-dns.apps.jparrill-dev.aws.kerbeross.com.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-monitoring/alertmanager-main\""
+                }
+            ]
+        },
+        {
+            "Name": "cname-canary-openshift-ingress-canary-external-dns.apps.jparrill-dev.aws.kerbeross.com.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-ingress-canary/canary\""
+                }
+            ]
+        },
+        {
+            "Name": "cname-console-openshift-console-external-dns.apps.jparrill-dev.aws.kerbeross.com.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-console/console\""
+                }
+            ]
+        },
+        {
+            "Name": "cname-downloads-openshift-console-external-dns.apps.jparrill-dev.aws.kerbeross.com.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-console/downloads\""
+                }
+            ]
+        },
+        {
+            "Name": "cname-prometheus-k8s-federate-openshift-monitoring-external-dns.apps.jparrill-dev.aws.kerbeross.com.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-monitoring/prometheus-k8s-federate\""
+                }
+            ]
+        },
+        {
+            "Name": "cname-prometheus-k8s-openshift-monitoring-external-dns.apps.jparrill-dev.aws.kerbeross.com.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-monitoring/prometheus-k8s\""
+                }
+            ]
+        },
+        {
+            "Name": "cname-thanos-querier-openshift-monitoring-external-dns.apps.jparrill-dev.aws.kerbeross.com.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-monitoring/thanos-querier\""
+                }
+            ]
+        },
+        {
+            "Name": "console-openshift-console-external-dns.apps.jparrill-dev.aws.kerbeross.com.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-console/console\""
+                }
+            ]
+        },
+        {
+            "Name": "console-openshift-console.apps.jparrill-dev.aws.kerbeross.com.",
+            "Type": "CNAME",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "router-default.apps.jparrill-dev.aws.kerbeross.com"
+                }
+            ]
+        },
+        {
+            "Name": "downloads-openshift-console-external-dns.apps.jparrill-dev.aws.kerbeross.com.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-console/downloads\""
+                }
+            ]
+        },
+        {
+            "Name": "downloads-openshift-console.apps.jparrill-dev.aws.kerbeross.com.",
+            "Type": "CNAME",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "router-default.apps.jparrill-dev.aws.kerbeross.com"
+                }
+            ]
+        },
+        {
+            "Name": "prometheus-k8s-federate-openshift-monitoring-external-dns.apps.jparrill-dev.aws.kerbeross.com.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-monitoring/prometheus-k8s-federate\""
+                }
+            ]
+        },
+        {
+            "Name": "prometheus-k8s-federate-openshift-monitoring.apps.jparrill-dev.aws.kerbeross.com.",
+            "Type": "CNAME",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "router-default.apps.jparrill-dev.aws.kerbeross.com"
+                }
+            ]
+        },
+        {
+            "Name": "prometheus-k8s-openshift-monitoring-external-dns.apps.jparrill-dev.aws.kerbeross.com.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-monitoring/prometheus-k8s\""
+                }
+            ]
+        },
+        {
+            "Name": "prometheus-k8s-openshift-monitoring.apps.jparrill-dev.aws.kerbeross.com.",
+            "Type": "CNAME",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "router-default.apps.jparrill-dev.aws.kerbeross.com"
+                }
+            ]
+        },
+        {
+            "Name": "thanos-querier-openshift-monitoring-external-dns.apps.jparrill-dev.aws.kerbeross.com.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-monitoring/thanos-querier\""
+                }
+            ]
+        },
+        {
+            "Name": "thanos-querier-openshift-monitoring.apps.jparrill-dev.aws.kerbeross.com.",
+            "Type": "CNAME",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "router-default.apps.jparrill-dev.aws.kerbeross.com"
+                }
+            ]
+        }
+    ]
+}

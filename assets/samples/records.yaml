@@ -1,0 +1,225 @@
+ResourceRecordSets:
+- Name: aws.kerbeross.com.
+  ResourceRecords:
+  - Value: ns-568.awsdns-07.net.
+  - Value: ns-241.awsdns-30.com.
+  - Value: ns-1128.awsdns-13.org.
+  - Value: ns-1892.awsdns-44.co.uk.
+  TTL: 172800
+  Type: NS
+- Name: aws.kerbeross.com.
+  ResourceRecords:
+  - Value: ns-568.awsdns-07.net. awsdns-hostmaster.amazon.com. 1 7200 900 1209600
+      86400
+  TTL: 900
+  Type: SOA
+- Name: alertmanager-main-openshift-monitoring-external-dns.apps.jparrill-dest.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: '"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-monitoring/alertmanager-main"'
+  TTL: 300
+  Type: TXT
+- Name: alertmanager-main-openshift-monitoring.apps.jparrill-dest.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: router-default.apps.jparrill-dest.aws.kerbeross.com
+  TTL: 300
+  Type: CNAME
+- Name: canary-openshift-ingress-canary-external-dns.apps.jparrill-dest.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: '"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-ingress-canary/canary"'
+  TTL: 300
+  Type: TXT
+- Name: canary-openshift-ingress-canary.apps.jparrill-dest.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: router-default.apps.jparrill-dest.aws.kerbeross.com
+  TTL: 300
+  Type: CNAME
+- Name: cname-alertmanager-main-openshift-monitoring-external-dns.apps.jparrill-dest.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: '"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-monitoring/alertmanager-main"'
+  TTL: 300
+  Type: TXT
+- Name: cname-canary-openshift-ingress-canary-external-dns.apps.jparrill-dest.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: '"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-ingress-canary/canary"'
+  TTL: 300
+  Type: TXT
+- Name: cname-console-openshift-console-external-dns.apps.jparrill-dest.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: '"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-console/console"'
+  TTL: 300
+  Type: TXT
+- Name: cname-downloads-openshift-console-external-dns.apps.jparrill-dest.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: '"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-console/downloads"'
+  TTL: 300
+  Type: TXT
+- Name: cname-prometheus-k8s-federate-openshift-monitoring-external-dns.apps.jparrill-dest.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: '"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-monitoring/prometheus-k8s-federate"'
+  TTL: 300
+  Type: TXT
+- Name: cname-prometheus-k8s-openshift-monitoring-external-dns.apps.jparrill-dest.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: '"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-monitoring/prometheus-k8s"'
+  TTL: 300
+  Type: TXT
+- Name: cname-thanos-querier-openshift-monitoring-external-dns.apps.jparrill-dest.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: '"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-monitoring/thanos-querier"'
+  TTL: 300
+  Type: TXT
+- Name: console-openshift-console-external-dns.apps.jparrill-dest.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: '"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-console/console"'
+  TTL: 300
+  Type: TXT
+- Name: console-openshift-console.apps.jparrill-dest.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: router-default.apps.jparrill-dest.aws.kerbeross.com
+  TTL: 300
+  Type: CNAME
+- Name: downloads-openshift-console-external-dns.apps.jparrill-dest.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: '"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-console/downloads"'
+  TTL: 300
+  Type: TXT
+- Name: downloads-openshift-console.apps.jparrill-dest.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: router-default.apps.jparrill-dest.aws.kerbeross.com
+  TTL: 300
+  Type: CNAME
+- Name: prometheus-k8s-federate-openshift-monitoring-external-dns.apps.jparrill-dest.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: '"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-monitoring/prometheus-k8s-federate"'
+  TTL: 300
+  Type: TXT
+- Name: prometheus-k8s-federate-openshift-monitoring.apps.jparrill-dest.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: router-default.apps.jparrill-dest.aws.kerbeross.com
+  TTL: 300
+  Type: CNAME
+- Name: prometheus-k8s-openshift-monitoring-external-dns.apps.jparrill-dest.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: '"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-monitoring/prometheus-k8s"'
+  TTL: 300
+  Type: TXT
+- Name: prometheus-k8s-openshift-monitoring.apps.jparrill-dest.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: router-default.apps.jparrill-dest.aws.kerbeross.com
+  TTL: 300
+  Type: CNAME
+- Name: thanos-querier-openshift-monitoring-external-dns.apps.jparrill-dest.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: '"heritage=external-dns,external-dns/owner=b345339b-5f4d-4c9e-b056-d2b53093f365,external-dns/resource=route/openshift-monitoring/thanos-querier"'
+  TTL: 300
+  Type: TXT
+- Name: thanos-querier-openshift-monitoring.apps.jparrill-dest.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: router-default.apps.jparrill-dest.aws.kerbeross.com
+  TTL: 300
+  Type: CNAME
+- Name: alertmanager-main-openshift-monitoring-external-dns.apps.jparrill-dev.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: '"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-monitoring/alertmanager-main"'
+  TTL: 300
+  Type: TXT
+- Name: alertmanager-main-openshift-monitoring.apps.jparrill-dev.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: router-default.apps.jparrill-dev.aws.kerbeross.com
+  TTL: 300
+  Type: CNAME
+- Name: canary-openshift-ingress-canary-external-dns.apps.jparrill-dev.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: '"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-ingress-canary/canary"'
+  TTL: 300
+  Type: TXT
+- Name: canary-openshift-ingress-canary.apps.jparrill-dev.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: router-default.apps.jparrill-dev.aws.kerbeross.com
+  TTL: 300
+  Type: CNAME
+- Name: cname-alertmanager-main-openshift-monitoring-external-dns.apps.jparrill-dev.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: '"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-monitoring/alertmanager-main"'
+  TTL: 300
+  Type: TXT
+- Name: cname-canary-openshift-ingress-canary-external-dns.apps.jparrill-dev.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: '"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-ingress-canary/canary"'
+  TTL: 300
+  Type: TXT
+- Name: cname-console-openshift-console-external-dns.apps.jparrill-dev.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: '"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-console/console"'
+  TTL: 300
+  Type: TXT
+- Name: cname-downloads-openshift-console-external-dns.apps.jparrill-dev.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: '"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-console/downloads"'
+  TTL: 300
+  Type: TXT
+- Name: cname-prometheus-k8s-federate-openshift-monitoring-external-dns.apps.jparrill-dev.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: '"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-monitoring/prometheus-k8s-federate"'
+  TTL: 300
+  Type: TXT
+- Name: cname-prometheus-k8s-openshift-monitoring-external-dns.apps.jparrill-dev.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: '"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-monitoring/prometheus-k8s"'
+  TTL: 300
+  Type: TXT
+- Name: cname-thanos-querier-openshift-monitoring-external-dns.apps.jparrill-dev.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: '"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-monitoring/thanos-querier"'
+  TTL: 300
+  Type: TXT
+- Name: console-openshift-console-external-dns.apps.jparrill-dev.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: '"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-console/console"'
+  TTL: 300
+  Type: TXT
+- Name: console-openshift-console.apps.jparrill-dev.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: router-default.apps.jparrill-dev.aws.kerbeross.com
+  TTL: 300
+  Type: CNAME
+- Name: downloads-openshift-console-external-dns.apps.jparrill-dev.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: '"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-console/downloads"'
+  TTL: 300
+  Type: TXT
+- Name: downloads-openshift-console.apps.jparrill-dev.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: router-default.apps.jparrill-dev.aws.kerbeross.com
+  TTL: 300
+  Type: CNAME
+- Name: prometheus-k8s-federate-openshift-monitoring-external-dns.apps.jparrill-dev.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: '"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-monitoring/prometheus-k8s-federate"'
+  TTL: 300
+  Type: TXT
+- Name: prometheus-k8s-federate-openshift-monitoring.apps.jparrill-dev.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: router-default.apps.jparrill-dev.aws.kerbeross.com
+  TTL: 300
+  Type: CNAME
+- Name: prometheus-k8s-openshift-monitoring-external-dns.apps.jparrill-dev.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: '"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-monitoring/prometheus-k8s"'
+  TTL: 300
+  Type: TXT
+- Name: prometheus-k8s-openshift-monitoring.apps.jparrill-dev.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: router-default.apps.jparrill-dev.aws.kerbeross.com
+  TTL: 300
+  Type: CNAME
+- Name: thanos-querier-openshift-monitoring-external-dns.apps.jparrill-dev.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: '"heritage=external-dns,external-dns/owner=2a0fb348-e981-449f-a1a5-542f1f8be710,external-dns/resource=route/openshift-monitoring/thanos-querier"'
+  TTL: 300
+  Type: TXT
+- Name: thanos-querier-openshift-monitoring.apps.jparrill-dev.aws.kerbeross.com.
+  ResourceRecords:
+  - Value: router-default.apps.jparrill-dev.aws.kerbeross.com
+  TTL: 300
+  Type: CNAME
