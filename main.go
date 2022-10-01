@@ -1,48 +1,107 @@
 package main
 
 import (
-	"html/template"
-	"os"
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"path/filepath"
 )
 
-type Record struct {
-	Action    string
-	DNSRecord string
-	Type      string
+type ChangeJson struct {
+	Comment string    `json:"Comment"`
+	Changes []Changes `json:"Changes"`
 }
 
-type JSONFile string
-type YAMLFile string
-type TEXTFile string
+type Changes struct {
+	Action             string               `json:"Action"`
+	ResourceRecordSets []ResourceRecordSets `json:"ResourceRecordSets"`
+}
+type AWSRecords struct {
+	ResourceRecordSets []ResourceRecordSets `json:"ResourceRecordSets"`
+}
+type ResourceRecords struct {
+	Value string `json:"Value"`
+}
+type ResourceRecordSets struct {
+	Name            string            `json:"Name"`
+	Type            string            `json:"Type"`
+	TTL             int               `json:"TTL"`
+	ResourceRecords []ResourceRecords `json:"ResourceRecords"`
+}
+
+type JSONFile struct {
+	FilePath   string
+	AWSRecords *AWSRecords
+}
+
+type YAMLFile struct {
+	FilePath   string
+	AWSRecords *AWSRecords
+}
+
+type TEXTFile struct {
+	FilePath   string
+	AWSRecords *AWSRecords
+}
 
 type Load interface {
 	RecordsFile()
 }
 
-func (j JSONFile) RecordsFile() {}
-func (y YAMLFile) RecordsFile() {}
-func (c TEXTFile) RecordsFile() {}
+func (j *JSONFile) RecordsFile() {
 
-func parseFile(path string) ([]Record, error) {}
+	file, err := ioutil.ReadFile(j.FilePath)
+	if err != nil {
+		panic(err)
+	}
+
+	err = json.Unmarshal([]byte(file), &j.AWSRecords)
+	if err != nil {
+		panic(err)
+	}
+}
+
+func (y *YAMLFile) RecordsFile() {}
+
+func parseFile(filePath string) AWSRecords {
+
+	data := AWSRecords{}
+
+	switch filepath.Ext(filePath) {
+	case ".json":
+		f := JSONFile{
+			FilePath:   filePath,
+			AWSRecords: &data,
+		}
+
+		f.RecordsFile()
+
+	default:
+		panic(fmt.Errorf("Filetype not implemented: %s\n", filepath.Ext(filePath)))
+	}
+
+	return data
+}
+
+func processData(data []ResourceRecordSets) ChangeJson {
+	changedData := ChangeJson{
+		Comment: "DNS Update from AWS Changer",
+	}
+
+	fmt.Println(data)
+
+	return changedData
+}
+
+//func generateChangeFile(outPath string, data AWSRecords) error {}
 
 func main() {
-	records := make([]Record, 0, 0)
 
-	drecord := Record{
-		Action:    "DELETE",
-		DNSRecord: "ovn-sbdb-jparrill-hosted-external-dns.jparrill-hosted.aws.kerbeross.com.",
-		Type:      "TXT",
-	}
-
-	t, err := template.New("r53-records").ParseFiles("assets/templates/batch.tmpl")
-	if err != nil {
-		panic(err)
-	}
-	err = t.Execute(os.Stdout, drecord)
-	if err != nil {
-		panic(err)
-	}
+	DRecords := parseFile("assets/samples/records.json")
+	CDRecords := processData(DRecords.ResourceRecordSets)
+	fmt.Println(CDRecords)
+	//generateChangeFile("out/AWSRecords.json")
 
 }
 
-func storeEntry(entry Record, xRecord *[]Record) error {}
+//func storeEntry(entry Record, xRecord *[]Record) error {}
