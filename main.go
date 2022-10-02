@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
+
+	"golang.org/x/exp/slices"
 )
 
 type ChangeJson struct {
@@ -13,14 +15,18 @@ type ChangeJson struct {
 }
 
 type Changes struct {
-	Action             string               `json:"Action"`
-	ResourceRecordSets []ResourceRecordSets `json:"ResourceRecordSets"`
+	Action             string                `json:"Action"`
+	ResourceRecordSets []CResourceRecordSets `json:"ResourceRecordSets"`
 }
 type AWSRecords struct {
 	ResourceRecordSets []ResourceRecordSets `json:"ResourceRecordSets"`
 }
 type ResourceRecords struct {
 	Value string `json:"Value"`
+}
+type CResourceRecordSets struct {
+	Name string `json:"Name"`
+	Type string `json:"Type"`
 }
 type ResourceRecordSets struct {
 	Name            string            `json:"Name"`
@@ -83,25 +89,75 @@ func parseFile(filePath string) AWSRecords {
 	return data
 }
 
-func processData(data []ResourceRecordSets) ChangeJson {
-	changedData := ChangeJson{
-		Comment: "DNS Update from AWS Changer",
+func processData(action string, data []ResourceRecordSets, filters ...string) Changes {
+	newData := make([]CResourceRecordSets, 0, 0)
+
+	if len(filters) == 0 {
+		for _, v := range data {
+			if v.Type != "SOA" && v.Type != "NS" {
+				newEntry := CResourceRecordSets{
+					Name: v.Name,
+					Type: v.Type,
+				}
+				newData = append(newData, newEntry)
+
+			}
+		}
+	} else {
+		for _, v := range data {
+			if v.Type != "SOA" && v.Type != "NS" {
+				if slices.Contains(filters, v.Type) {
+					newEntry := CResourceRecordSets{
+						Name: v.Name,
+						Type: v.Type,
+					}
+					newData = append(newData, newEntry)
+				}
+			}
+		}
 	}
 
-	fmt.Println(data)
+	c := Changes{
+		Action:             action,
+		ResourceRecordSets: newData,
+	}
 
-	return changedData
+	return c
 }
 
-//func generateChangeFile(outPath string, data AWSRecords) error {}
+func renderJson(output string, data ChangeJson) {
+
+	switch output {
+	case "stdout":
+		b, err := json.Marshal(data)
+		if err != nil {
+			panic(err)
+		}
+		fmt.Println(string(b))
+
+	default:
+		panic(fmt.Errorf("Output method not implemented: %s\n", output))
+	}
+}
 
 func main() {
 
+	// Initialize the basic variables
+	ZoneID := "Z02718293M33QHDEQBROL"
+	xChanges := make([]Changes, 0, 0)
+	filters := make([]string, 0, 0)
+	filters = append(filters, "TXT")
+
+	// Recover and parse AWS Records file for Zone X
 	DRecords := parseFile("assets/samples/records.json")
-	CDRecords := processData(DRecords.ResourceRecordSets)
-	fmt.Println(CDRecords)
-	//generateChangeFile("out/AWSRecords.json")
+	DChanges := processData("DELETE", DRecords.ResourceRecordSets, filters...)
+	xChanges = append(xChanges, DChanges)
 
+	AWSCFile := ChangeJson{
+		Comment: fmt.Sprintf("Changes over Route53 AWS in Zone: %v", ZoneID),
+		Changes: xChanges,
+	}
+
+	// Output
+	renderJson("stdout", AWSCFile)
 }
-
-//func storeEntry(entry Record, xRecord *[]Record) error {}
