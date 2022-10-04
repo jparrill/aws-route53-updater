@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/jparrill/pkg/awsRoute53BG"
+	"github.com/jparrill/aws-route53-updater/pkg/awsRoute53BG"
 )
 
 func main() {
