@@ -12,8 +12,11 @@ var rootCmd = &cobra.Command{
 	Short: "AWS Route53 Changes Generator",
 	Long: `AWS Route53 Changes batch file Generator.
 
-	This program generates the needed file to update the Route53 DNS entries focused in a concrete Hosted Zone.
-	The base documentation is located here https://docs.aws.amazon.com/cli/latest/reference/route53/change-resource-record-sets.html`,
+This program generates the needed file to update the Route53 DNS entries focused in a concrete Hosted Zone.
+The base documentation is located here https://docs.aws.amazon.com/cli/latest/reference/route53/change-resource-record-sets.html.
+
+The source PKG is located at github.com/jparrill/aws-route53-updater/pkg/awsRoute53BG which contains all the functions and documentation
+for their consumption and use.`,
 }
 
 func Execute() {
@@ -24,13 +27,5 @@ func Execute() {
 }
 
 func init() {
-	// Cobra Flags
-	// - Action
-	// - ZoneID
-	// - Filters
-	// - DNS Records FilePath
-	// - Comment
-	// - OutFormat
-
-	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	rootCmd.Flags().BoolP("info", "i", false, "Basic info message")
 }
