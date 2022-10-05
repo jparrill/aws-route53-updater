@@ -17,7 +17,7 @@ func Generator(zoneID, action, dnsRecordsFile, changeComment, outputFormat strin
 	xChanges = append(xChanges, DChanges)
 
 	AWSCFile := awsRoute53BG.ChangeJson{
-		Comment: fmt.Sprintf("Changes over Route53 AWS in Zone: %v", zoneID),
+		Comment: fmt.Sprintf("%s in Zone: %v", changeComment, zoneID),
 		Changes: xChanges,
 	}
 
