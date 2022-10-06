@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-func Exporter(output string, data ChangeJson) {
+func Exporter(output string, data []byte) {
 
 	switch output {
 	case "stdout":
