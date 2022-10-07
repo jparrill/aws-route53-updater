@@ -1,13 +1,12 @@
 package internal
 
 import (
-	"encoding/json"
 	"fmt"
 
 	"github.com/jparrill/aws-route53-updater/pkg/awsRoute53BG"
 )
 
-func Generator(zoneID, action, dnsRecordsFile, changeComment, outputFormat string, filters ...string) {
+func Generator(zoneID, action, dnsRecordsFile, changeComment, outputFormat, outputPath string, filters ...string) {
 
 	// Initialize the basic variables
 	xChanges := make([]awsRoute53BG.Changes, 0, 0)
@@ -23,7 +22,12 @@ func Generator(zoneID, action, dnsRecordsFile, changeComment, outputFormat strin
 	}
 
 	// Output
-	b, _ := json.Marshal(AWSCFile)
-	fmt.Println(string(b))
-	//awsRoute53BG.Exporter("stdout", []byte(AWSCFile))
+	switch outputFormat {
+	case "stdout":
+		awsRoute53BG.Exporter(outputFormat, AWSCFile, "")
+	case "json":
+		awsRoute53BG.Exporter(outputFormat, AWSCFile, outputPath)
+	default:
+		panic(fmt.Errorf("Exporter method not implemented: %s\n", outputFormat))
+	}
 }

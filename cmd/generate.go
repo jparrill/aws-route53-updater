@@ -15,7 +15,7 @@ var generate = &cobra.Command{
 		Over some resource Types: ("SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS")`,
 
 	Run: func(cmd *cobra.Command, args []string) {
-		internal.Generator(ZoneID, Action, DNSRecordsFile, ChangeComment, OutputFormat, Filters...)
+		internal.Generator(ZoneID, Action, DNSRecordsFile, ChangeComment, OutputFormat, OutputPath, Filters...)
 
 	},
 }
@@ -26,7 +26,8 @@ func init() {
 	generate.PersistentFlags().StringVarP(&ZoneID, "zoneid", "z", "Z02718293M33QHDEQBROL", "AWS Route53 ZoneID to be modified")
 	generate.PersistentFlags().StringVarP(&DNSRecordsFile, "recordsfile", "r", "assets/samples/records.json", "AWS Route53 generated file from command 'aws route53 list-resource-record-sets ...'")
 	generate.PersistentFlags().StringVarP(&ChangeComment, "comment", "c", "Change over Route53 platform in AWS", "Comment about the change to be submitted")
-	generate.PersistentFlags().StringVarP(&OutputFormat, "output", "o", "json", "Output Format for the file to be submitted to Route53 API: (json|yaml)")
-	generate.PersistentFlags().StringSliceVarP(&Filters, "filters", "f", []string{}, "Filters to just perform actions over them")
+	generate.PersistentFlags().StringVarP(&OutputFormat, "format", "f", "json", "Output Format for the file to be submitted to Route53 API: (json|yaml|stdout)")
+	generate.PersistentFlags().StringVarP(&OutputPath, "output", "o", "/tmp/records.json", "Output FilePath for the file to be submitted to Route53 API")
+	generate.PersistentFlags().StringSliceVarP(&Filters, "recordTypes", "t", []string{}, "Filters or RecordTypes to just perform actions over them")
 	generate.Flags().BoolP("info", "i", false, "Generates a batch file for AWS Route53 API with changes")
 }

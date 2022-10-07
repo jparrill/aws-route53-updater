@@ -26,6 +26,7 @@ var (
 	DNSRecordsFile string
 	ChangeComment  string
 	OutputFormat   string
+	OutputPath     string
 )
 
 func Execute() {

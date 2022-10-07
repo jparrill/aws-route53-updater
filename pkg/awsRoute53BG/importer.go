@@ -7,56 +7,46 @@ import (
 	"path/filepath"
 )
 
-type JSONFile struct {
-	FilePath   string
-	AWSRecords *AWSRecords
-}
-
-type YAMLFile struct {
-	FilePath   string
-	AWSRecords *AWSRecords
-}
-
-type TEXTFile struct {
-	FilePath   string
-	AWSRecords *AWSRecords
-}
-
 type Load interface {
-	RecordsFile()
+	RecordsFile() AWSRecords
 }
 
-func (j *JSONFile) RecordsFile() {
+func (j *JSONFile) RecordsFile() AWSRecords {
 
-	file, err := ioutil.ReadFile(j.FilePath)
+	var err error
+	awsRec := AWSRecords{}
+	RRS := make([]ResourceRecordSets, 0, 0)
+	awsRec.ResourceRecordSets = RRS
+
+	j.Data, err = ioutil.ReadFile(j.FilePath)
 	if err != nil {
 		panic(err)
 	}
 
-	err = json.Unmarshal([]byte(file), &j.AWSRecords)
+	err = json.Unmarshal(j.Data, &awsRec)
 	if err != nil {
 		panic(err)
 	}
+
+	return awsRec
 }
 
 func (y *YAMLFile) RecordsFile() {}
 
 func ParseFile(filePath string) AWSRecords {
 
-	data := AWSRecords{}
+	var data []byte
 
 	switch filepath.Ext(filePath) {
 	case ".json":
 		f := JSONFile{
-			FilePath:   filePath,
-			AWSRecords: &data,
+			FilePath: filePath,
+			Data:     data,
 		}
 
-		f.RecordsFile()
+		return f.RecordsFile()
 
 	default:
 		panic(fmt.Errorf("Filetype not implemented: %s\n", filepath.Ext(filePath)))
 	}
-
-	return data
 }

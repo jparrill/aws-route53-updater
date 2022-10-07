@@ -1,5 +1,17 @@
 package awsRoute53BG
 
+type JSONFile struct {
+	Format   string
+	FilePath string
+	Data     []byte
+}
+
+type YAMLFile struct {
+	Format   string
+	FilePath string
+	Data     []byte
+}
+
 type ChangeJson struct {
 	Comment string    `json:"Comment"`
 	Changes []Changes `json:"Changes"`
