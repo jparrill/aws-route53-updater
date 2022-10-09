@@ -35,12 +35,12 @@ func Classifier(format string, rawData *bytes.Buffer, path string, kind string) 
 	case "gen":
 		var AWSChange ChangeJson
 		dec.Decode(&AWSChange)
-		AWSChange.Exporter(format, path, kind)
+		Exporter(format, path, kind, AWSChange)
 
 	case "rec":
 		var RRS localroute53RRS
 		dec.Decode(&RRS)
-		RRS.Exporter(format, path, kind)
+		Exporter(format, path, kind, RRS)
 
 	default:
 		panic(fmt.Errorf("Kind type not implemented: %s\n", kind))
@@ -48,24 +48,11 @@ func Classifier(format string, rawData *bytes.Buffer, path string, kind string) 
 
 }
 
-func (rrs localroute53RRS) Exporter(format string, path string, kind string) {
+func Exporter(format string, path string, kind string, component interface{}) {
 
-	switch format {
-	case "stdout":
-		b, err := json.Marshal(rrs)
-		if err != nil {
-			panic(err)
-		}
-		j := JSONFile{
-			Format:   format,
-			FilePath: "",
-			Data:     b,
-		}
-
-		fmt.Println(string(j.Data))
-
-	case "json":
-		b, err := json.Marshal(rrs)
+	switch component.(type) {
+	case localroute53RRS, ChangeJson:
+		b, err := json.Marshal(component)
 		if err != nil {
 			panic(err)
 		}
@@ -75,43 +62,20 @@ func (rrs localroute53RRS) Exporter(format string, path string, kind string) {
 			Data:     b,
 		}
 
-		j.Export()
+		if format == "stdout" {
+
+			j.FilePath = ""
+			fmt.Println(string(j.Data))
+
+		} else if format == "json" {
+
+			j.Export()
+
+		} else {
+			panic(fmt.Errorf("Output method not implemented, (json|stdout) methods implemented): %s\n", format))
+		}
 
 	default:
-		panic(fmt.Errorf("Output method not implemented: %s\n", format))
-	}
-}
-
-func (c *ChangeJson) Exporter(format string, path string, kind string) {
-
-	switch format {
-	case "stdout":
-		b, err := json.Marshal(c)
-		if err != nil {
-			panic(err)
-		}
-		j := JSONFile{
-			Format:   format,
-			FilePath: "",
-			Data:     b,
-		}
-
-		fmt.Println(string(j.Data))
-
-	case "json":
-		b, err := json.Marshal(c)
-		if err != nil {
-			panic(err)
-		}
-		j := JSONFile{
-			Format:   format,
-			FilePath: path,
-			Data:     b,
-		}
-
-		j.Export()
-
-	default:
-		panic(fmt.Errorf("Output method not implemented: %s\n", format))
+		panic(fmt.Errorf("Component not implemented: %s\n", format))
 	}
 }
