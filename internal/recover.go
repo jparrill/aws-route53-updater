@@ -1,12 +1,15 @@
 package internal
 
 import (
+	"bytes"
+	"encoding/gob"
 	"fmt"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/awserr"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/route53"
+	"github.com/jparrill/aws-route53-updater/pkg/awsRoute53BG"
 )
 
 func RecoverHostedZone(zoneID, outputPath, outputFormat string, filters ...string) {
@@ -36,7 +39,7 @@ func RecoverHostedZone(zoneID, outputPath, outputFormat string, filters ...strin
 
 }
 
-func RecoverRecordSet(zoneID, outputPath, outputFormat string, filters ...string) []*route53.ResourceRecordSet {
+func RecoverRecordSet(zoneID string) []*route53.ResourceRecordSet {
 	svc := route53.New(session.New())
 	input := &route53.ListResourceRecordSetsInput{
 		HostedZoneId: aws.String(zoneID),
@@ -59,4 +62,16 @@ func RecoverRecordSet(zoneID, outputPath, outputFormat string, filters ...string
 	}
 
 	return result.ResourceRecordSets
+}
+
+func Recover(zoneID, outputPath, outputFormat string, filters ...string) {
+	var buff bytes.Buffer
+	kind := "rec"
+	enc := gob.NewEncoder(&buff)
+	err := enc.Encode(RecoverRecordSet(zoneID))
+	if err != nil {
+		panic(err)
+	}
+
+	awsRoute53BG.Classifier(outputFormat, &buff, outputPath, kind)
 }

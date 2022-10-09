@@ -23,11 +23,8 @@ var generate = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(generate)
 	generate.PersistentFlags().StringVarP(&Action, "action", "a", "DELETE", "(UPPERCASE) Action to generate the BatchFile: (UPSERT|DELETE|CREATE)")
-	generate.PersistentFlags().StringVarP(&ZoneID, "zoneid", "z", "Z02718293M33QHDEQBROL", "AWS Route53 ZoneID to be modified")
 	generate.PersistentFlags().StringVarP(&DNSRecordsFile, "recordsfile", "r", "assets/samples/records.json", "AWS Route53 generated file from command 'aws route53 list-resource-record-sets ...'")
 	generate.PersistentFlags().StringVarP(&ChangeComment, "comment", "c", "Change over Route53 platform in AWS", "Comment about the change to be submitted")
-	generate.PersistentFlags().StringVarP(&OutputFormat, "format", "f", "json", "Output Format for the file to be submitted to Route53 API: (json|yaml|stdout)")
-	generate.PersistentFlags().StringVarP(&OutputPath, "output", "o", "/tmp/records.json", "Output FilePath for the file to be submitted to Route53 API")
 	generate.PersistentFlags().StringSliceVarP(&Filters, "recordTypes", "t", []string{}, "Filters or RecordTypes to just perform actions over them")
 	generate.Flags().BoolP("info", "i", false, "Generates a batch file for AWS Route53 API with changes")
 }

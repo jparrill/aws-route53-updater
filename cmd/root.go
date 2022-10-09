@@ -38,4 +38,7 @@ func Execute() {
 
 func init() {
 	rootCmd.Flags().BoolP("info", "i", false, "Basic info message")
+	rootCmd.PersistentFlags().StringVarP(&OutputFormat, "format", "f", "stdout", "Output Format for the file to be submitted to Route53 API: (json|yaml)")
+	rootCmd.PersistentFlags().StringVarP(&OutputPath, "output", "o", "/tmp/records.json", "Output FilePath for the file to be submitted to Route53 API")
+	rootCmd.PersistentFlags().StringVarP(&ZoneID, "zoneid", "z", "Z02718293M33QHDEQBROL", "AWS Route53 ZoneID to be modified")
 }

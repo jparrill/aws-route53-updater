@@ -1,5 +1,7 @@
 package awsRoute53BG
 
+import "github.com/aws/aws-sdk-go/service/route53"
+
 type JSONFile struct {
 	Format   string
 	FilePath string
@@ -37,3 +39,4 @@ type ResourceRecordSets struct {
 	TTL             int               `json:"TTL"`
 	ResourceRecords []ResourceRecords `json:"ResourceRecords"`
 }
+type localroute53RRS []*route53.ResourceRecordSet

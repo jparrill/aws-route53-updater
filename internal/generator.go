@@ -1,6 +1,8 @@
 package internal
 
 import (
+	"bytes"
+	"encoding/gob"
 	"fmt"
 
 	"github.com/jparrill/aws-route53-updater/pkg/awsRoute53BG"
@@ -16,18 +18,17 @@ func Generator(zoneID, action, dnsRecordsFile, changeComment, outputFormat, outp
 	DChanges := awsRoute53BG.ProcessData(action, DRecords.ResourceRecordSets, filters...)
 	xChanges = append(xChanges, DChanges)
 
-	AWSCFile := awsRoute53BG.ChangeJson{
+	var buff bytes.Buffer
+	kind := "gen"
+	enc := gob.NewEncoder(&buff)
+	err := enc.Encode(awsRoute53BG.ChangeJson{
 		Comment: fmt.Sprintf("%s in Zone: %v", changeComment, zoneID),
 		Changes: xChanges,
+	})
+	if err != nil {
+		panic(err)
 	}
 
 	// Output
-	switch outputFormat {
-	case "stdout":
-		awsRoute53BG.Exporter(outputFormat, AWSCFile, "")
-	case "json":
-		awsRoute53BG.Exporter(outputFormat, AWSCFile, outputPath)
-	default:
-		panic(fmt.Errorf("Exporter method not implemented: %s\n", outputFormat))
-	}
+	awsRoute53BG.Classifier(outputFormat, &buff, outputPath, kind)
 }
