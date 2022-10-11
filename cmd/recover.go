@@ -14,7 +14,11 @@ var recovery = &cobra.Command{
 	`,
 
 	Run: func(cmd *cobra.Command, args []string) {
-		internal.Recover(ZoneID, OutputPath, OutputFormat, Filters...)
+		err := internal.Recover(ZoneID, OutputPath, OutputFormat, Filters...)
+	if err != nil {
+		panic(fmt.Errorf("Error unmarshaling data from RecordsFile: %v\n", err)
+	}
+
 	},
 }
 

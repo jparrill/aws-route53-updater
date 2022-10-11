@@ -39,7 +39,7 @@ func RecoverHostedZone(zoneID, outputPath, outputFormat string, filters ...strin
 
 }
 
-func RecoverRecordSet(zoneID string) []*route53.ResourceRecordSet {
+func RecoverRecordSet(zoneID string) ([]*route53.ResourceRecordSet, error) {
 	svc := route53.New(session.New())
 	input := &route53.ListResourceRecordSetsInput{
 		HostedZoneId: aws.String(zoneID),
@@ -50,28 +50,37 @@ func RecoverRecordSet(zoneID string) []*route53.ResourceRecordSet {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
 			case route53.ErrCodeNoSuchHostedZone:
-				fmt.Println(route53.ErrCodeNoSuchHostedZone, aerr.Error())
+				fmt.Errorf("Error Zone does not exists: %v\n, trace: %v\n", route53.ErrCodeNoSuchHostedZone, aerr.Error())
 			case route53.ErrCodeInvalidInput:
-				fmt.Println(route53.ErrCodeInvalidInput, aerr.Error())
+				fmt.Errorf("Error Code: %v\n, trace: %v\n", route53.ErrCodeInvalidInput, aerr.Error())
 			default:
-				fmt.Println(aerr.Error())
+				return result.ResourceRecordSets, fmt.Errorf("Error not managed in data received from AWS request: %v\n", aerr.Error())
 			}
 		} else {
-			fmt.Println(err.Error())
+			return result.ResourceRecordSets, fmt.Errorf("Error in data received from AWS request: %v\n", err.Error())
 		}
 	}
 
-	return result.ResourceRecordSets
+	return result.ResourceRecordSets, nil
 }
 
-func Recover(zoneID, outputPath, outputFormat string, filters ...string) {
+func Recover(zoneID, outputPath, outputFormat string, filters ...string) error {
 	var buff bytes.Buffer
 	kind := "rec"
 	enc := gob.NewEncoder(&buff)
-	err := enc.Encode(RecoverRecordSet(zoneID))
+	rrs, err := RecoverRecordSet(zoneID)
 	if err != nil {
-		panic(err)
+		return fmt.Errorf("Error recovering record set: %v\n", err)
+	}
+	err = enc.Encode(rrs)
+	if err != nil {
+		return fmt.Errorf("Error storing data for processing into buffer: %v\n", err)
 	}
 
-	awsRoute53BG.Classifier(outputFormat, &buff, outputPath, kind)
+	err = awsRoute53BG.Classifier(outputFormat, &buff, outputPath, kind)
+	if err != nil {
+		return fmt.Errorf("Error classifying or exporting data received: %v\n", err)
+	}
+
+	return nil
 }

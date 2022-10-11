@@ -2,8 +2,10 @@ package awsRoute53BG
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io/ioutil"
+	"os"
 	"path/filepath"
 )
 
@@ -11,31 +13,31 @@ type Load interface {
 	RecordsFile() AWSRecords
 }
 
-func (j *JSONFile) RecordsFile() AWSRecords {
+func (j *JSONFile) RecordsFile(awsRec AWSRecords) (AWSRecords, error) {
 
 	var err error
-	awsRec := AWSRecords{}
 	RRS := make([]ResourceRecordSets, 0, 0)
 	awsRec.ResourceRecordSets = RRS
 
-	j.Data, err = ioutil.ReadFile(j.FilePath)
-	if err != nil {
-		panic(err)
+	if _, err := os.Stat(j.FilePath); errors.Is(err, os.ErrNotExist) {
+		return awsRec, fmt.Errorf("Error loading RecordsFile, FileNotFound: %v\n", err)
 	}
+	j.Data, err = ioutil.ReadFile(j.FilePath)
 
 	err = json.Unmarshal(j.Data, &awsRec)
 	if err != nil {
-		panic(err)
+		return awsRec, fmt.Errorf("Error unmarshaling data from RecordsFile: %v\n", err)
 	}
 
-	return awsRec
+	return awsRec, nil
 }
 
-func (y *YAMLFile) RecordsFile() {}
+//func (y *YAMLFile) RecordsFile(awsRec AWSRecords) (AWSRecords, error) {}
 
-func ParseFile(filePath string) AWSRecords {
+func ParseFile(filePath string) (AWSRecords, error) {
 
 	var data []byte
+	awsRec := AWSRecords{}
 
 	switch filepath.Ext(filePath) {
 	case ".json":
@@ -44,9 +46,9 @@ func ParseFile(filePath string) AWSRecords {
 			Data:     data,
 		}
 
-		return f.RecordsFile()
+		return f.RecordsFile(awsRec)
 
 	default:
-		panic(fmt.Errorf("Filetype not implemented: %s\n", filepath.Ext(filePath)))
+		return awsRec, fmt.Errorf("Filetype not implemented: %s\n", filepath.Ext(filePath))
 	}
 }
