@@ -12,7 +12,7 @@ import (
 	"github.com/jparrill/aws-route53-updater/pkg/awsRoute53BG"
 )
 
-func RecoverHostedZone(zoneID, outputPath, outputFormat string, filters ...string) {
+func RecoverHostedZone(zoneID string) (route53.HostedZone, error) {
 	svc := route53.New(session.New())
 	input := &route53.GetHostedZoneInput{
 		Id: aws.String(zoneID),
@@ -23,19 +23,17 @@ func RecoverHostedZone(zoneID, outputPath, outputFormat string, filters ...strin
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
 			case route53.ErrCodeNoSuchHostedZone:
-				fmt.Println(route53.ErrCodeNoSuchHostedZone, aerr.Error())
+				return *result.HostedZone, fmt.Errorf("Error, Zone does not exists: %v\n, trace: %v\n", route53.ErrCodeNoSuchHostedZone, aerr.Error())
 			case route53.ErrCodeInvalidInput:
-				fmt.Println(route53.ErrCodeInvalidInput, aerr.Error())
+				return *result.HostedZone, fmt.Errorf("Error Code: %v\n, trace: %v\n", route53.ErrCodeInvalidInput, aerr.Error())
 			default:
-				fmt.Println(aerr.Error())
+				return *result.HostedZone, fmt.Errorf("Error not managed in data received from AWS request: \n - %v", aerr.Error())
 			}
 		} else {
-			fmt.Println(err.Error())
+			return *result.HostedZone, fmt.Errorf("Error in data received from AWS request: \n - %v", err.Error())
 		}
-		return
 	}
-
-	fmt.Println(result)
+	return *result.HostedZone, nil
 
 }
 
@@ -50,9 +48,9 @@ func RecoverRecordSet(zoneID string) ([]*route53.ResourceRecordSet, error) {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
 			case route53.ErrCodeNoSuchHostedZone:
-				fmt.Errorf("Error Zone does not exists: %v\n, trace: %v\n", route53.ErrCodeNoSuchHostedZone, aerr.Error())
+				return result.ResourceRecordSets, fmt.Errorf("Error, Zone does not exists: %v\n, trace: %v\n", route53.ErrCodeNoSuchHostedZone, aerr.Error())
 			case route53.ErrCodeInvalidInput:
-				fmt.Errorf("Error Code: %v\n, trace: %v\n", route53.ErrCodeInvalidInput, aerr.Error())
+				return result.ResourceRecordSets, fmt.Errorf("Error Code: %v\n, trace: %v\n", route53.ErrCodeInvalidInput, aerr.Error())
 			default:
 				return result.ResourceRecordSets, fmt.Errorf("Error not managed in data received from AWS request: \n - %v", aerr.Error())
 			}

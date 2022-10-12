@@ -58,7 +58,10 @@ func Classifier(format string, rawData *bytes.Buffer, path string, kind string) 
 			return fmt.Errorf("Error decoding data from buffer: \n - %v", err)
 		}
 
-		Exporter(format, path, kind, RRS)
+		err = Exporter(format, path, kind, RRS)
+		if err != nil {
+			return fmt.Errorf("Error exporting data to struct: \n - %v", err)
+		}
 
 	default:
 		return fmt.Errorf("Kind type not implemented: \n - %s", kind)
@@ -69,6 +72,7 @@ func Classifier(format string, rawData *bytes.Buffer, path string, kind string) 
 
 func Exporter(format string, path string, kind string, component interface{}) error {
 
+	fmt.Println("format: ", format)
 	switch component.(type) {
 	case localroute53RRS, ChangeJson:
 		b, err := json.Marshal(component)
@@ -94,7 +98,7 @@ func Exporter(format string, path string, kind string, component interface{}) er
 			}
 
 		} else {
-			return fmt.Errorf("Output method not implemented, (json|stdout) methods implemented): \n - %s", format)
+			return fmt.Errorf("Output format not implemented, (json|stdout) are the only methods available: \n - %s", format)
 		}
 
 	default:
