@@ -1,6 +1,8 @@
 package cmd
 
 import (
+	"fmt"
+
 	"github.com/jparrill/aws-route53-updater/internal"
 	"github.com/spf13/cobra"
 )
@@ -15,7 +17,10 @@ var generate = &cobra.Command{
 		Over some resource Types: ("SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS")`,
 
 	Run: func(cmd *cobra.Command, args []string) {
-		internal.Generator(ZoneID, Action, DNSRecordsFile, ChangeComment, OutputFormat, OutputPath, Filters...)
+		err := internal.Generator(ZoneID, Action, DNSRecordsFile, ChangeComment, OutputFormat, OutputPath, Filters...)
+		if err != nil {
+			panic(fmt.Errorf("Error generating data file from file %s AWS in zone %s: \n - %v", DNSRecordsFile, ZoneID, err))
+		}
 
 	},
 }

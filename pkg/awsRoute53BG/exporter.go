@@ -18,12 +18,12 @@ func (j JSONFile) Export() error {
 
 	err := json.Indent(&indentedBytes, j.Data, "", "  ")
 	if err != nil {
-		return fmt.Errorf("Error indenting data into struct: %v\n", err)
+		return fmt.Errorf("Error indenting data into struct: \n - %v", err)
 	}
 
 	err = ioutil.WriteFile(j.FilePath, indentedBytes.Bytes(), 0644)
 	if err != nil {
-		return fmt.Errorf("Error writing data into file %s: %v\n", j.FilePath, err)
+		return fmt.Errorf("Error writing data into file %s: \n - %v", j.FilePath, err)
 	}
 
 	return nil
@@ -42,12 +42,12 @@ func Classifier(format string, rawData *bytes.Buffer, path string, kind string) 
 
 		err := dec.Decode(&AWSChange)
 		if err != nil {
-			return fmt.Errorf("Error decoding data from buffer: %v\n", err)
+			return fmt.Errorf("Error decoding data from buffer: \n - %v", err)
 		}
 
 		err = Exporter(format, path, kind, AWSChange)
 		if err != nil {
-			return fmt.Errorf("Error exporting data to struct: %v\n", err)
+			return fmt.Errorf("Error exporting data to struct: \n - %v", err)
 		}
 
 	case "rec":
@@ -55,13 +55,13 @@ func Classifier(format string, rawData *bytes.Buffer, path string, kind string) 
 
 		err := dec.Decode(&RRS)
 		if err != nil {
-			return fmt.Errorf("Error decoding data from buffer: %v\n", err)
+			return fmt.Errorf("Error decoding data from buffer: \n - %v", err)
 		}
 
 		Exporter(format, path, kind, RRS)
 
 	default:
-		return fmt.Errorf("Kind type not implemented: %s\n", kind)
+		return fmt.Errorf("Kind type not implemented: \n - %s", kind)
 	}
 
 	return nil
@@ -73,7 +73,7 @@ func Exporter(format string, path string, kind string, component interface{}) er
 	case localroute53RRS, ChangeJson:
 		b, err := json.Marshal(component)
 		if err != nil {
-			return fmt.Errorf("Error marshaling output JSON: %v\n", err)
+			return fmt.Errorf("Error marshaling output JSON: \n - %v", err)
 		}
 		j := JSONFile{
 			Format:   format,
@@ -90,15 +90,15 @@ func Exporter(format string, path string, kind string, component interface{}) er
 
 			err := j.Export()
 			if err != nil {
-				return fmt.Errorf("Error exporting to JSON: %v\n", err)
+				return fmt.Errorf("Error exporting to JSON: \n - %v", err)
 			}
 
 		} else {
-			return fmt.Errorf("Output method not implemented, (json|stdout) methods implemented): %s\n", format)
+			return fmt.Errorf("Output method not implemented, (json|stdout) methods implemented): \n - %s", format)
 		}
 
 	default:
-		return fmt.Errorf("Component not implemented: %s\n", format)
+		return fmt.Errorf("Component not implemented: \n - %s", format)
 	}
 
 	return nil

@@ -1,6 +1,8 @@
 package cmd
 
 import (
+	"fmt"
+
 	"github.com/jparrill/aws-route53-updater/internal"
 	"github.com/spf13/cobra"
 )
@@ -15,9 +17,9 @@ var recovery = &cobra.Command{
 
 	Run: func(cmd *cobra.Command, args []string) {
 		err := internal.Recover(ZoneID, OutputPath, OutputFormat, Filters...)
-	if err != nil {
-		panic(fmt.Errorf("Error unmarshaling data from RecordsFile: %v\n", err)
-	}
+		if err != nil {
+			panic(fmt.Errorf("Error recovering data from AWS in zone %s: \n - %v", ZoneID, err))
+		}
 
 	},
 }

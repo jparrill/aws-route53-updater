@@ -20,13 +20,13 @@ func (j *JSONFile) RecordsFile(awsRec AWSRecords) (AWSRecords, error) {
 	awsRec.ResourceRecordSets = RRS
 
 	if _, err := os.Stat(j.FilePath); errors.Is(err, os.ErrNotExist) {
-		return awsRec, fmt.Errorf("Error loading RecordsFile, FileNotFound: %v\n", err)
+		return awsRec, fmt.Errorf("Error loading RecordsFile, FileNotFound: \n - %v", err)
 	}
 	j.Data, err = ioutil.ReadFile(j.FilePath)
 
 	err = json.Unmarshal(j.Data, &awsRec)
 	if err != nil {
-		return awsRec, fmt.Errorf("Error unmarshaling data from RecordsFile: %v\n", err)
+		return awsRec, fmt.Errorf("Error unmarshaling data from RecordsFile: \n - %v", err)
 	}
 
 	return awsRec, nil
@@ -49,6 +49,6 @@ func ParseFile(filePath string) (AWSRecords, error) {
 		return f.RecordsFile(awsRec)
 
 	default:
-		return awsRec, fmt.Errorf("Filetype not implemented: %s\n", filepath.Ext(filePath))
+		return awsRec, fmt.Errorf("Filetype not implemented: \n - %s", filepath.Ext(filePath))
 	}
 }

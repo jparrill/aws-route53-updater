@@ -54,10 +54,10 @@ func RecoverRecordSet(zoneID string) ([]*route53.ResourceRecordSet, error) {
 			case route53.ErrCodeInvalidInput:
 				fmt.Errorf("Error Code: %v\n, trace: %v\n", route53.ErrCodeInvalidInput, aerr.Error())
 			default:
-				return result.ResourceRecordSets, fmt.Errorf("Error not managed in data received from AWS request: %v\n", aerr.Error())
+				return result.ResourceRecordSets, fmt.Errorf("Error not managed in data received from AWS request: \n - %v", aerr.Error())
 			}
 		} else {
-			return result.ResourceRecordSets, fmt.Errorf("Error in data received from AWS request: %v\n", err.Error())
+			return result.ResourceRecordSets, fmt.Errorf("Error in data received from AWS request: \n - %v", err.Error())
 		}
 	}
 
@@ -70,16 +70,16 @@ func Recover(zoneID, outputPath, outputFormat string, filters ...string) error {
 	enc := gob.NewEncoder(&buff)
 	rrs, err := RecoverRecordSet(zoneID)
 	if err != nil {
-		return fmt.Errorf("Error recovering record set: %v\n", err)
+		return fmt.Errorf("Error recovering record set: \n - %v", err)
 	}
 	err = enc.Encode(rrs)
 	if err != nil {
-		return fmt.Errorf("Error storing data for processing into buffer: %v\n", err)
+		return fmt.Errorf("Error storing data for processing into buffer: \n - %v", err)
 	}
 
 	err = awsRoute53BG.Classifier(outputFormat, &buff, outputPath, kind)
 	if err != nil {
-		return fmt.Errorf("Error classifying or exporting data received: %v\n", err)
+		return fmt.Errorf("Error classifying or exporting data received: \n - %v", err)
 	}
 
 	return nil
