@@ -15,19 +15,19 @@ const (
 	RecRightOutputFormat = "json"
 )
 
-func TestRecoverFailZoneWrong(t *testing.T) {
+func TestRecoverFailWrongZone(t *testing.T) {
 	g := NewWithT(t)
 	err := Recover(RecWrongZoneID, RecRightOutputPath, RecRightOutputFormat)
 	g.Expect(err).Should(HaveOccurred(), "Error recovering record set")
 }
 
-func TestRecoverFailOutFormatWrong(t *testing.T) {
+func TestRecoverFailWrongOutFormat(t *testing.T) {
 	g := NewWithT(t)
 	err := Recover(RecRightZoneID, RecRightOutputPath, RecWrongOutputFormat)
 	g.Expect(err).Should(HaveOccurred(), "Output format not implemented")
 }
 
-func TestRecoverFailOutPathWrong(t *testing.T) {
+func TestRecoverFailWrongOutPath(t *testing.T) {
 	g := NewWithT(t)
 	err := Recover(RecRightZoneID, RecWrongOutputPath, RecRightOutputFormat)
 	g.Expect(err).ShouldNot(BeNil())

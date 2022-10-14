@@ -22,6 +22,10 @@ func Generator(zoneID, action, dnsRecordsFile, changeComment, outputFormat, outp
 	if err != nil {
 		return err
 	}
+	err = awsRoute53BG.ValidateZoneID(zoneID)
+	if err != nil {
+		return fmt.Errorf("Error in ZoneID: \n %v", err)
+	}
 	DChanges := awsRoute53BG.ProcessData(action, DRecords.ResourceRecordSets, filters...)
 	if len(DChanges.ResourceRecordSets) <= 0 {
 		return fmt.Errorf("There is no data to process, exiting...: \n - %v", DChanges)
