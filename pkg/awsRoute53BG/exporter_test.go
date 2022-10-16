@@ -132,3 +132,24 @@ func TestExporterFailWrongFormat(t *testing.T) {
 	err = Exporter(WrongFormat, RightPath, RecRightKind, &RRS)
 	g.Expect(err).ShouldNot(BeNil())
 }
+
+func TestExporterFailWrongPath(t *testing.T) {
+	g := NewWithT(t)
+	var buff bytes.Buffer
+	var RRS localroute53RRS
+	xChanges := make([]Changes, 0, 0)
+	enc := gob.NewEncoder(&buff)
+
+	err := enc.Encode(ChangeJson{
+		Comment: fmt.Sprintf("%s in Zone: %v", "SampleComment", RightZoneID),
+		Changes: xChanges,
+	})
+	if err != nil {
+		panic("Error encoding data")
+	}
+	dec := gob.NewDecoder(&buff)
+
+	err = dec.Decode(&RRS)
+	err = Exporter(RightFormat, WrongPath, RecRightKind, &RRS)
+	g.Expect(err).ShouldNot(BeNil())
+}
