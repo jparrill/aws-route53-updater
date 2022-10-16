@@ -8,10 +8,6 @@ import (
 	"io/ioutil"
 )
 
-type Format interface {
-	Export()
-}
-
 func (j JSONFile) Export() error {
 	fmt.Println("Exporting data to JSONFile: ", j.FilePath)
 	var indentedBytes bytes.Buffer
@@ -72,7 +68,6 @@ func Classifier(format string, rawData *bytes.Buffer, path string, kind string) 
 
 func Exporter(format string, path string, kind string, component interface{}) error {
 
-	fmt.Println("format: ", format)
 	switch component.(type) {
 	case localroute53RRS, ChangeJson:
 		b, err := json.Marshal(component)
