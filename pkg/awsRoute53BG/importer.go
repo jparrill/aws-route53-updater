@@ -32,8 +32,6 @@ func (j *JSONFile) RecordsFile(awsRec AWSRecords) (AWSRecords, error) {
 	return awsRec, nil
 }
 
-//func (y *YAMLFile) RecordsFile(awsRec AWSRecords) (AWSRecords, error) {}
-
 func ParseFile(filePath string) (AWSRecords, error) {
 
 	var data []byte

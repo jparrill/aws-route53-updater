@@ -10,23 +10,23 @@ import (
 )
 
 const (
-	WrongFormat    = "jason"
-	WrongRawData   = "{[{}]}"
-	WrongPath      = "/temepe/fail.json"
-	WrongKind      = "rev"
-	RightFormat    = "json"
-	RightPath      = "/tmp/test.json"
-	RightRawData   = `{"ResourceRecordSets":[]}`
-	RecRightKind   = "rec"
-	GenRightKind   = "gen"
-	RightZoneID    = "Z02718293M33QHDEQBROL"
-	dnsRecordsFile = "assets/samples/records.json"
+	WrongFormat        = "jason"
+	WrongRawData       = "{[{}]}"
+	WrongPath          = "/temepe/fail.json"
+	WrongKind          = "rev"
+	WrongAction        = "DILATE"
+	WrongZoneID        = "Z02718293M33EQBROCOLY"
+	RightFormat        = "json"
+	RightAction        = "DELETE"
+	RightPath          = "/tmp/test.json"
+	RightRawData       = `{"ResourceRecordSets":[]}`
+	RecRightKind       = "rec"
+	GenRightKind       = "gen"
+	RightZoneID        = "Z02718293M33QHDEQBROL"
+	dnsRecordsFile     = "assets/samples/records.json"
+	dnsRecordsYamlFile = "assets/samples/records.txt"
+	filterTXT          = "TXT"
 )
-
-//func TestExporterFailWrongFormat(t *testing.T) {
-//	g := NewWithT(t)
-//
-//}
 
 func TestClassifierFailWrongKind(t *testing.T) {
 	g := NewWithT(t)
